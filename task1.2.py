@@ -7,7 +7,7 @@
 # b) Подумайте как наделить бота ""интеллектом""
  
  
-def enter_initial_data():
+def enter_initial_data2():
     player1 = input('Введите имя Первого игрока\n')
     player2 = 'Bot'
     print(f' Вы играете против {player2}')
@@ -22,18 +22,17 @@ def enter_initial_data():
         print(f'Первый ход у игрока {player2}')
         flag=-1
         n=1
-    dictionary={'1':player1, '-1':player2, 'flag': flag, 'n':n, 'total_number':total_number, 'max_number':max_number}  
+    dictionary={'1':player1, '-1':player2,'n':n, 'total_number':total_number, 'max_number':max_number}  
     
 
     #for item in dictionary:
     #    print('{}:{}'.format(item,dictionary[item])) 
     return dictionary
 
-def game_play():
-    initial_data=enter_initial_data()
+def game_play2():
+    initial_data=enter_initial_data2()
     while int(initial_data['total_number']) > 0: # условие продалжения игры
-        initial_data['flag']=(-1)**initial_data['n'] 
-        item=str(initial_data['flag'])
+        item=str((-1)**initial_data['n'])
         if int(initial_data['total_number']) <= int(initial_data['max_number']):
             print('Победитель {}'.format(initial_data[item]))
             break
@@ -43,7 +42,7 @@ def game_play():
                 initial_data['total_number']=int(initial_data['total_number'])-a
                 print('Остаток {}'. format(initial_data['total_number']))
            elif int(item) == -1:
-                a=rd(0,int(initial_data['max_number']))
+                a=rd(1,int(initial_data['max_number']))
                 print(f' {initial_data[item]} выбрал  {a}  изымаемых конфет')
                 initial_data['total_number']=int(initial_data['total_number'])-a
                 print('Остаток {}'. format(initial_data['total_number'])) 
@@ -53,4 +52,4 @@ def game_play():
 
 from random import randint as rd
 
-game_play()
+game_play2()
